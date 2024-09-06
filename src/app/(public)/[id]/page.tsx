@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import { PriceComponent } from "./priceComponent";
 
 export default function Page() {
   return (
@@ -26,7 +28,13 @@ export default function Page() {
           />
           <div className="md:w-1/2 w-full md:pl-8 mt-4 md:mt-0">
             <h1 className="text-5xl font-bold">Classic Gold</h1>
-            <p className="text-xl font-semibold mt-2">$2,999.99</p>
+            <Suspense
+              fallback={
+                <p className="text-xl font-semibold mt-2">Loading...</p>
+              }
+            >
+              <PriceComponent />
+            </Suspense>
             <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg mt-4 transition duration-300">
               Buy Now
             </button>

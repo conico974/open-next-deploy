@@ -40,3 +40,5 @@ next-env.d.ts
 
 # open-next
 .open-next
+rsa
+rsa.pub

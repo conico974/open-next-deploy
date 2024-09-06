@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project aim to demonstrate how to use OpenNext and SST to deploy a Next.js app to different places (Not natively supported by SST)
 
-## Getting Started
+Given that OpenNext allow you to split your Next app into multiple parts, you can mix these examples to deploy your app to different places.
 
-First, run the development server:
+If you're missing a deployment example, feel free to open an issue or even better a PR.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**These are not meant to be used in production as they are**, but rather as a starting point for your own deployments.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What's included
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+We include a few constructs that demonstrate how to deploy a Next.js app to different places. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Cloudfront
 
-## Learn More
+All these constructs support lambda backends, you just need to change the desired functions in the OpenNext config folder.
 
-To learn more about Next.js, take a look at the following resources:
+#### NextWithEc2AndCloudfront
+It uses the `open-next/ec2.ts` config file for OpenNext.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To use this, you'll need to provide a private and public key as SST secrets.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+With the current configuration, the app will be deployed partially to an EC2 instance and partially to a Lambda function.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### NextWithEcsAndCloudfront
+It uses the `open-next/ecs.ts` config file for OpenNext.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+With the current configuration, the app will be deployed partially to an ECS Fargate cluster and partially to a Lambda function.
+
+### ~~Cloudflare~~
+Not yet implemented
+
+### ~~GCP~~
+Not yet implemented
+
+### ~~Azure~~
+Not yet implemented

@@ -1,13 +1,11 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const coo = cookies();
-  if (!coo.get("token")) {
-    redirect("/login");
-  }
   async function logout() {
     "use server";
     const coo = cookies();
