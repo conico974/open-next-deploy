@@ -5,7 +5,17 @@ export default function Login() {
   async function login() {
     "use server";
     const coo = cookies();
-    coo.set("token", "admin", { path: "/" });
+    coo.set("token", "admin", {
+      path: "/",
+      sameSite: "strict",
+      secure: true,
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    });
+    coo.set("otherThing", "otherValue", {
+      path: "/",
+      sameSite: "strict",
+      expires: new Date(Date.now() + 1000 * 60),
+    });
     redirect("/dashboard");
   }
   return (

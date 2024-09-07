@@ -3,24 +3,25 @@ import { OpenNextConfig } from "open-next/types/open-next.js";
 const config = {
   default: {
     override: {
-      wrapper: "node",
+      // There is an issue right now with the node wrapper that does not set the cookies properly
+      wrapper: () => import("./custom/nodeWrapper").then((mod) => mod.default),
       converter: "node",
       generateDockerfile: true,
     },
   },
-  functions: {
-    protected: {
-      patterns: ["dashboard/*", "login/*"],
-      routes: ["app/(protected)/dashboard/page", "app/(protected)/login/page"],
-    },
-  },
+  // functions: {
+  //   protected: {
+  //     patterns: ["dashboard", "login"],
+  //     routes: ["app/(protected)/dashboard/page", "app/(protected)/login/page"],
+  //   },
+  // },
   imageOptimization: {
     arch: "x64",
-    override: {
-      wrapper: "node",
-      converter: "node",
-      generateDockerfile: true,
-    },
+    // override: {
+    //   wrapper: "node",
+    //   converter: "node",
+    //   generateDockerfile: true,
+    // },
   },
 } satisfies OpenNextConfig;
 
