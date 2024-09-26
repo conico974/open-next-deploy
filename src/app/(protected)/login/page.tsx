@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+export const revalidate = 30;
+
 export default function Login() {
   async function login() {
     "use server";
@@ -24,6 +26,9 @@ export default function Login() {
         <h1 className="text-2xl font-bold text-center text-indigo-500 dark:text-white mb-6">
           Admin Login
         </h1>
+        <h2 className="text-lg text-center mb-6">
+          Time : {new Date().toLocaleTimeString()}
+        </h2>
         <form action={login}>
           <div className="mb-4">
             <label htmlFor="username" className="block text-lg mb-2">

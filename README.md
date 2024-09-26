@@ -1,6 +1,8 @@
-This project aim to demonstrate how to use OpenNext and SST to deploy a Next.js app to different places (Not natively supported by SST)
+This project aim to demonstrate how to use OpenNext (the aws adapter) and SST to deploy a Next.js app to different places (Not natively supported by SST)
 
-Given that OpenNext allow you to split your Next app into multiple parts, you can mix these examples to deploy your app to different places.
+Given that @opennextjs/aws allow you to split your Next app into multiple parts, you can mix these examples to deploy your app to different places.
+
+It requires @opennextjs/aws@3.1.4 or higher.
 
 If you're missing a deployment example, feel free to open an issue or even better a PR.
 
@@ -27,11 +29,12 @@ It uses the `open-next/ecs.ts` config file for OpenNext.
 
 With the current configuration, the app will be deployed partially to an ECS Fargate cluster and partially to a Lambda function.
 
-### ~~Cloudflare~~
-Not yet implemented
+### Cloudflare
 
-### ~~GCP~~
-Not yet implemented
+This example only deploy the middleware to Cloudflare, if you wish to fully deploy on cloudflare see 
+[@opennextjs/cloudflare](https://opennext.js.org/cloudflare)
 
-### ~~Azure~~
-Not yet implemented
+#### NextWithEcsAndCloudflare
+It uses the `open-next/cloudflare.ts` config file for OpenNext.
+
+With the current configuration, the app will be deployed partially to an ECS Fargate cluster and partially to a Lambda function. The middleware is also deployed on Cloudflare and ISR/SSG routes are served directly from the edge.

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const revalidate = 30;
+
 export default function Home() {
   return (
     <div className="container mx-auto px-4">
