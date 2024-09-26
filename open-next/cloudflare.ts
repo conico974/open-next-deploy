@@ -20,7 +20,7 @@ const config = {
     override: {
       wrapper: "cloudflare",
       converter: "edge",
-      // Remove this with the 3.1.4 release
+      //TODO: Remove this with the 3.1.4 release
       incrementalCache: () =>
         import("./custom/s3-lite").then((mod) => mod.default),
       tagCache: () => import("./custom/ddb-null").then((mod) => mod.default),

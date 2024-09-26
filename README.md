@@ -21,13 +21,14 @@ It uses the `open-next/ec2.ts` config file for OpenNext.
 
 To use this, you'll need to provide a private and public key as SST secrets.
 
-With the current configuration, the app will be deployed partially to an EC2 instance and partially to a Lambda function.
+With the current configuration, the app will be deployed partially to an EC2 instance and partially to a Lambda function. `dashboard` and `login` are deployed to lambda, the rest to an EC2 instance.
 
 
 #### NextWithEcsAndCloudfront
 It uses the `open-next/ecs.ts` config file for OpenNext.
 
-With the current configuration, the app will be deployed partially to an ECS Fargate cluster and partially to a Lambda function.
+With the current configuration, the app will be deployed partially to an ECS Fargate cluster. It also supports deploying to lambda, it just needs to be configured in the OpenNext config file.
+
 
 ### Cloudflare
 
