@@ -37,7 +37,6 @@ export default {
           secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
         });
       }
-      // TODO: fetch from S3
       const response = await awsClient.fetch(
         `https://${env.CACHE_BUCKET_NAME}.s3.${env.CACHE_BUCKET_REGION}.amazonaws.com/_assets/${pathname}`,
         {

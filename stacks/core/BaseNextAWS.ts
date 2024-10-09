@@ -159,9 +159,8 @@ export abstract class BaseNextAWS<Distribution> {
 
   private buildApp() {
     execSync(
-      `node /mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build --config-path ${this.configPath}`,
+      `npx @opennextjs/aws@3.1.4 build --config-path ${this.configPath}`,
     );
-    // execSync(`npx open-next@3.1.1 build --config-path ${this.configPath}`);
 
     const openNextOutput = readFileSync(".open-next/open-next.output.json", {
       encoding: "utf-8",

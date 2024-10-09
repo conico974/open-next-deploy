@@ -4,6 +4,8 @@ const config = {
   default: {
     override: {
       wrapper: "aws-lambda-streaming",
+
+      // Uncomment the following lines to use the node wrapper and deploy in ecs
       // wrapper: "node",
       // converter: "node",
       // generateDockerfile: true,
@@ -20,11 +22,6 @@ const config = {
     override: {
       wrapper: "cloudflare",
       converter: "edge",
-      //TODO: Remove this with the 3.1.4 release
-      incrementalCache: () =>
-        import("./custom/s3-lite").then((mod) => mod.default),
-      tagCache: () => import("./custom/ddb-null").then((mod) => mod.default),
-      queue: () => import("./custom/sqs-lite").then((mod) => mod.default),
     },
   },
   dangerous: {

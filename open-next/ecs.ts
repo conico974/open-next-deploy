@@ -3,9 +3,7 @@ import { OpenNextConfig } from "open-next/types/open-next.js";
 const config = {
   default: {
     override: {
-      // There is an issue right now with the node wrapper that does not set the cookies properly
-      // TODO: Remove this with the 3.1.4 release
-      wrapper: () => import("./custom/nodeWrapper").then((mod) => mod.default),
+      wrapper: "node",
       converter: "node",
       generateDockerfile: true,
     },
