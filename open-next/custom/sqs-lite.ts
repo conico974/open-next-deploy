@@ -1,6 +1,6 @@
 import { AwsClient } from "aws4fetch";
 
-import { Queue } from "open-next/queue/types.js";
+import { Queue } from "@opennextjs/aws/types/overrides.js";
 
 let awsClient: AwsClient | null = null;
 

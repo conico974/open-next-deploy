@@ -1,4 +1,4 @@
-import { BaseNextAWS, DistribOrigin } from "./BaseNextAWS";
+import { BaseNextAWS } from "./BaseNextAWS";
 
 export abstract class BaseNextWithCloudfront extends BaseNextAWS<aws.cloudfront.Distribution> {
   // CloudFront's managed CachingOptimized policy

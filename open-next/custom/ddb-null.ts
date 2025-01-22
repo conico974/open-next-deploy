@@ -1,4 +1,4 @@
-import { TagCache } from "open-next/cache/tag/types.js";
+import type { TagCache } from "@opennextjs/aws/types/overrides.js";
 
 const tagCache: TagCache = {
   async getByPath(path) {

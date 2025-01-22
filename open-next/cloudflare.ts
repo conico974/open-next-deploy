@@ -1,4 +1,4 @@
-import { OpenNextConfig } from "open-next/types/open-next.js";
+import type { OpenNextConfig } from "@opennextjs/aws/types/open-next.js";
 
 const config = {
   default: {
@@ -20,8 +20,9 @@ const config = {
   middleware: {
     external: true,
     override: {
-      wrapper: "cloudflare",
+      wrapper: "cloudflare-edge",
       converter: "edge",
+      proxyExternalRequest: "fetch",
     },
   },
   dangerous: {
@@ -29,7 +30,10 @@ const config = {
   },
 
   imageOptimization: {
-    arch: "x64",
+    install: {
+      packages: ["sharp"],
+      arch: "x64",
+    },
     // override: {
     //   wrapper: "node",
     //   converter: "node",

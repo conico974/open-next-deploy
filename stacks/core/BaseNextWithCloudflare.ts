@@ -1,8 +1,5 @@
-import { readFileSync, renameSync, writeFileSync } from "fs";
+import { readFileSync } from "fs";
 import { BaseNextAWS } from "./BaseNextAWS";
-
-import { buildSync } from "esbuild";
-import path from "path";
 
 export abstract class BaseNextWithCloudflare extends BaseNextAWS<sst.cloudflare.Worker> {
   private createAWSAccessKey() {

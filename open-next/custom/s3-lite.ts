@@ -1,7 +1,7 @@
 import { AwsClient } from "aws4fetch";
 
-import type { Extension } from "open-next/cache/next-types.js";
-import type { IncrementalCache } from "open-next/cache/incremental/types.js";
+import type { Extension } from "@opennextjs/aws/types/cache.js";
+import type { IncrementalCache } from "@opennextjs/aws/types/overrides.js";
 
 let awsClient: AwsClient | null = null;
 

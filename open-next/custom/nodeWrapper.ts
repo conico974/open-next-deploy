@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 
-import { StreamCreator } from "open-next/http/openNextResponse.js";
-import type { WrapperHandler } from "open-next/types/open-next.js";
+import type { StreamCreator } from "@opennextjs/aws/types/open-next.js";
+import type { WrapperHandler } from "@opennextjs/aws/types/overrides.js";
 
 const wrapper: WrapperHandler = async (handler, converter) => {
   const server = createServer(async (req, res) => {
@@ -61,8 +61,10 @@ const wrapper: WrapperHandler = async (handler, converter) => {
   };
 };
 
-export default {
+const nodeWrapper = {
   wrapper,
   name: "node",
   supportStreaming: true,
 };
+
+export default nodeWrapper;

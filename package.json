@@ -9,14 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@opennextjs/aws": "3.4",
     "aws4fetch": "^1.0.20",
     "esbuild": "^0.23.1",
     "next": "14.2.3",
-    "open-next": "3.1.1",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.5",
-    "sst": "ion"
+    "sst": "^3.6.9"
   },
   "devDependencies": {
     "@types/node": "^20",

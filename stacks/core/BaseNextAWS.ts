@@ -5,7 +5,7 @@ import {
   OpenNextServerFunctionOrigin,
 } from "./types";
 import path from "node:path";
-import { readFileSync, existsSync, copyFileSync, writeFileSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync } from "node:fs";
 
 export type DistribOrigin =
   | {
@@ -159,7 +159,7 @@ export abstract class BaseNextAWS<Distribution> {
 
   private buildApp() {
     execSync(
-      `npx @opennextjs/aws@3.1.4 build --config-path ${this.configPath}`,
+      `npx @opennextjs/aws@3.4.0 build --config-path ${this.configPath}`,
     );
 
     const openNextOutput = readFileSync(".open-next/open-next.output.json", {
