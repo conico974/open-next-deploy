@@ -8,7 +8,7 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   async function logout() {
     "use server";
-    const coo = cookies();
+    const coo = await cookies();
     coo.delete("token");
     redirect("/login");
   }

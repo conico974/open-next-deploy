@@ -6,7 +6,7 @@ export const revalidate = 30;
 export default function Login() {
   async function login() {
     "use server";
-    const coo = cookies();
+    const coo = await cookies();
     coo.set("token", "admin", {
       path: "/",
       sameSite: "strict",

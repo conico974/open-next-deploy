@@ -107,6 +107,7 @@ export abstract class BaseNextAWS<Distribution> {
 
   protected getEnvironment() {
     return {
+      NODE_ENV: "production",
       CACHE_BUCKET_NAME: this.bucket.name,
       CACHE_BUCKET_KEY_PREFIX: "_cache",
       CACHE_BUCKET_REGION: this.region,
