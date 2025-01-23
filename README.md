@@ -38,4 +38,13 @@ This example only deploy the middleware to Cloudflare, if you wish to fully depl
 #### NextWithEcsAndCloudflare
 It uses the `open-next/cloudflare.ts` config file for OpenNext.
 
-With the current configuration, the app will be deployed partially to an ECS Fargate cluster and partially to a Lambda function. The middleware is also deployed on Cloudflare and ISR/SSG routes are served directly from the edge.
+With the current configuration, the app can be deployed partially to an ECS Fargate cluster and partially to Lambda functions. The middleware is also deployed on Cloudflare and ISR/SSG routes are served directly from the edge.
+
+#### MultiRegionNextWithCloudflare
+It uses the `open-next/cloudflare-multi.ts` config file for OpenNext. It uses a custom `OriginResolver` to determine the region from which the app will be served.
+
+With the current configuration, the app can be deployed partially to an ECS Fargate cluster and partially to Lambda functions. The middleware is also deployed on Cloudflare and ISR/SSG routes are served directly from the edge. 
+
+Both `/dashboard` and `/login` are deployed to multiple regions (i.e. The default one and the ones provided to the). The region from which it will be served is based on the `x-region` header to make it easier to test. In a real-world scenario, you would use the user's location (or similar) to determine the region.
+This open the possibility to deploy your app to multiple regions (with support for lambda streaming) and serve it from the closest one to the user alongside with user specific data located in the closest region.
+It could also be used to restrict content to some region for legal reasons.

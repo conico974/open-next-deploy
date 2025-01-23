@@ -17,29 +17,39 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "cloudflare-MyBucketAssets": {
+    "cloudflaremulti-MyBucketAssets": {
       "name": string
       "type": "sst.aws.Bucket"
     }
-    "cloudflare-MyQueue": {
+    "cloudflaremulti-MyQueue": {
       "type": "sst.aws.Queue"
       "url": string
     }
-    "cloudflare-RevalidationSeeder": {
+    "cloudflaremulti-RevalidationSeeder": {
       "name": string
       "type": "sst.aws.Function"
     }
-    "serverdefault": {
-      "name": string
-      "type": "sst.aws.Function"
-      "url": string
-    }
-    "serverimageOptimizer": {
+    "server-default": {
       "name": string
       "type": "sst.aws.Function"
       "url": string
     }
-    "serverprotected": {
+    "server-imageOptimizer": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "server-regional": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "server-regionaleu-west-3": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "server-regionalus-west-1": {
       "name": string
       "type": "sst.aws.Function"
       "url": string

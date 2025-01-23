@@ -130,24 +130,32 @@ export abstract class BaseNextAWS<Distribution> {
     };
   }
 
-  protected createLambdaOrigin(originKey: string): DistribOrigin {
+  protected createLambdaOrigin(
+    originKey: string,
+    provider?: aws.Provider,
+    region?: string,
+  ): DistribOrigin {
     const lambdaOrigin = this.openNextOutput.origins[
       originKey
     ] as OpenNextServerFunctionOrigin;
     const statement = this.getPolicyStatement();
-    const fn = new sst.aws.Function(`server${originKey}`, {
-      bundle: path.join(".", lambdaOrigin.bundle),
-      handler: lambdaOrigin.handler,
-      streaming: lambdaOrigin.streaming,
-      runtime: "nodejs20.x",
-      environment: this.getEnvironment(),
-      //@ts-ignore
-      permissions: statement.map((s) => ({
-        actions: s.Action,
-        resources: s.Resource,
-      })),
-      url: true,
-    });
+    const fn = new sst.aws.Function(
+      `server-${originKey}${region ?? ""}`,
+      {
+        bundle: path.join(".", lambdaOrigin.bundle),
+        handler: lambdaOrigin.handler,
+        streaming: lambdaOrigin.streaming,
+        runtime: "nodejs20.x",
+        environment: this.getEnvironment(),
+        //@ts-ignore
+        permissions: statement.map((s) => ({
+          actions: s.Action,
+          resources: s.Resource,
+        })),
+        url: true,
+      },
+      { provider },
+    );
     return {
       type: "function",
       originId: originKey,

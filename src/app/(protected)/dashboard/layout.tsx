@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
-export default function Layout({
+export default async function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   async function logout() {
@@ -12,6 +12,10 @@ export default function Layout({
     coo.delete("token");
     redirect("/login");
   }
+
+  // We provide a fake x-region header to simulate the region we want to access
+  // In a real-world scenario, you'd choose a different way to determine the region
+  const region = (await headers()).get("x-region");
   return (
     <div className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white flex">
       <nav className="bg-white dark:bg-zinc-800 shadow-md w-64 min-h-screen py-4 flex flex-col justify-between">
@@ -21,7 +25,7 @@ export default function Layout({
               href="#"
               className="text-2xl font-bold text-indigo-500 dark:text-white"
             >
-              TLW - Admin
+              TLW - Admin - {region} - {process.env.AWS_DEFAULT_REGION}
             </a>
           </div>
           <ul className="space-y-2">

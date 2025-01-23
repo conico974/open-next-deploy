@@ -2,6 +2,7 @@ import { readFileSync } from "fs";
 import { BaseNextAWS } from "./BaseNextAWS";
 
 export abstract class BaseNextWithCloudflare extends BaseNextAWS<sst.cloudflare.Worker> {
+  protected middlewareEnv: Record<string, $util.Output<string>> = {};
   private createAWSAccessKey() {
     const iamUser = new aws.iam.User(this.getFormatedName("iam-user"), {
       forceDestroy: true,
@@ -69,6 +70,10 @@ export abstract class BaseNextWithCloudflare extends BaseNextAWS<sst.cloudflare.
             text: keys.id,
           },
           ...Object.entries(this.getEnvironment()).map(([key, value]) => ({
+            name: key,
+            text: value,
+          })),
+          ...Object.entries(this.middlewareEnv).map(([key, value]) => ({
             name: key,
             text: value,
           })),
